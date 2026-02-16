@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+   <title>Homwork 1</title>
+</head>
+<body class="m-5">
+   <hr>
+   <h1>Homework: Varriables, Operators and If Conditions</h1>
+   <label for="num1">បញ្ជូលតម្លៃទី១៖​​ </label><br>
+   <input type="number" name="num1" id="num1" class="form-control w-100">
+   <br>
+   <label for="num2">បញ្ជូលតម្លៃទី២៖​​ </label><br>
+   <input type="number" name="num2" id="num2" class="form-control w-100">
+   <br>
+   <label for="score">បញ្ជូលពិន្ទុ (0 - 100)៖​​ </label><br>
+   <input type="number" name="score" id="score" class="form-control w-100">
+   <br> 
+   <label for="age">បញ្ជូលអាយុ៖​​ </label><br>
+   <input type="number" name="age" id="age" class="form-control w-100">
+   <br>
+   <button class="btn btn-primary" id="submit" onclick="submit()">Submit</button>
+   <br><br>
+   <h2>លទ្ធផល​៖</h2>
+   <br>
+
+   <div style="display: none;" id="result">
+   <p>១.ការគណនានែតម្លៃទី​១ និង​ទី២៖ </p>
+      <ul class="p-3 bg-primary-subtle border border-primary rounded" style="list-style-type: none;">
+         <li>- ផលបូក៖ <span id="plusResult"></span></li>
+         <li>- ផលដក៖ <span id="minusResult"></span></li>
+         <li>- ផលគុណ៖ <span id="multiResult"></span></li>
+         <li>- ផលចែក៖ <span id="divideResult"></span></li>
+      </ul>
+      <p>២.​ ពិន្ទុធ្លាក់ឬ ជាប់៖</p>
+      <p class="bg-warning-subtle p-3 border border-warning rounded">- លទ្ធផល៖ <span id="gradeResult"></span></p>
+      <p>៣.​ ប្រៀបធៀបតម្លៃទី១ និង​ទី២៖</p>
+      <P class="bg-danger-subtle p-3 border border-danger rounded">- ការប្រៀបធៀប៖ <span id="compareGrade"></span></P>
+      <p>៤. ការត្រួតពិនិត្រអាយុរបស់អ្នក៖</p>
+      <p class="bg-secondary-subtle p-3 border border-secondary rounded">- អាយុរបស់អ្នក៖​ <span id="checkAge"></span></p>
+   </div>
+
+      <script>
+         // 1. Calculate the results of num1 and num2
+         function submit() {
+            let number1 = parseInt(document.getElementById("num1").value);
+            let number2 = parseInt(document.getElementById("num2").value); 
+
+            let plusResult = number1 + number2;
+            let minusResult = number1 - number2;
+            let multiResult = number1 * number2;
+            let divideResult = number1 / number2;
+            document.getElementById("plusResult").innerHTML = plusResult;
+            document.getElementById("minusResult").innerHTML = minusResult;
+            document.getElementById("multiResult").innerHTML = multiResult;
+            document.getElementById("divideResult").innerHTML = divideResult;
+            
+            // 2. Check if the score is pass or fail
+            
+            let getScore = parseFloat(document.getElementById("score").value);
+            if (getScore >= 50 && getScore <= 100) {
+               document.getElementById("gradeResult").innerHTML = "ជាប់";
+            } else if(getScore >= 0 && getScore < 50) {
+               document.getElementById("gradeResult").innerHTML = "ធ្លាក់"; 
+            } else {
+               document.getElementById("gradeResult").innerHTML = "អ្នកបញ្ជូលពិន្ទុមិនត្រឹមត្រូវ!"; 
+            }
+
+            // 3 Compare num1 and num2 
+            if (number1 > number2){
+               document.getElementById("compareGrade").innerHTML = "តម្លៃទី១​ ធំជាង";
+            } else if(number1 < number2){
+               document.getElementById("compareGrade").innerHTML = "តម្លៃទី២ ធំជាង";
+            } else if(number1 == number2) {
+               document.getElementById("compareGrade").innerHTML = "តម្លៃទី១​ ស្មើនឹងតម្លៃទី២";
+            } else {
+               document.getElementById("compareGrade").innerHTML = "តម្លៃទី​១ ឬទី២ មិនបានបញ្ជូល!"; 
+            }
+
+            // 4 check age
+            let getAge = parseInt(document.getElementById("age").value);
+             if(getAge >= 0 && getAge <= 2) {
+               document.getElementById("checkAge").innerHTML = "វ័យទារក";
+            } else if(getAge >= 3 && getAge <= 12 ){
+               document.getElementById("checkAge").innerHTML = "វ័យកុមារ";
+            } else if(getAge >= 13 && getAge <= 19) {
+               document.getElementById("checkAge").innerHTML = "វ័យជំទង់";
+            } else if(getAge >= 20 && getAge <= 35) {
+               document.getElementById("checkAge").innerHTML = "ពេញវ័យ";
+            } else if(getAge >= 36 && getAge <= 60) {
+               document.getElementById("checkAge").innerHTML = "វ័យកណ្តាល";
+            } else if(getAge > 60) {
+               document.getElementById("checkAge").innerHTML = "វ័យចំណាស់";
+            } 
+            
+            var show = document.getElementById("result");
+            show.style.display = "block";
+            
+         }
+      </script>
+
+
+</body>
+</html>
